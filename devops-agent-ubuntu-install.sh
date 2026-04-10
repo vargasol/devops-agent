@@ -17,7 +17,7 @@ wget https://download.agent.dev.azure.com/agent/4.271.0/vsts-agent-linux-x64-4.2
 tar -zxvf $BASE_DIR/vsts-agent-linux-x64-4.271.0.tar.gz
 
 echo "Running unattended configuration"
-$BASE_DIR/./config.sh --unattended \
+$BASE_DIR/config.sh --unattended \
   --url $ORG_URL \
   --auth pat \
   --token $PAT \
@@ -26,8 +26,8 @@ $BASE_DIR/./config.sh --unattended \
   --acceptTeeEula
 
 echo "Configuring vsts service"
-sudo $BASE_DIR/./svc.sh install
-sudo $BASE_DIR/./svc.sh start
+sudo $BASE_DIR/svc.sh install
+sudo $BASE_DIR/svc.sh start
 
 rm vsts-agent-linux-x64-4.271.0.tar.gz
 
