@@ -6,15 +6,17 @@ ORG_URL=$1
 PAT="$2"
 POOL="$3"
 AGENT="$4"
+BASE_DIR="/opt/vsts-agent-linux"
 
-export BASE_DIR=/opt/vsts-agent-linux
 sudo apt update
 sudo apt install -y curl wget apt-transport-https
 
-mkdir $BASE_DIR
-cd $BASE_DIR
+mkdir -p $BASE_DIR && cd $BASE_DIR
+echo "Downloading vsts agent"
 wget https://download.agent.dev.azure.com/agent/4.271.0/vsts-agent-linux-x64-4.271.0.tar.gz -P $BASE_DIR
 tar -zxvf $BASE_DIR/vsts-agent-linux-x64-4.271.0.tar.gz
+
+echo "Running unattended configuration"
 $BASE_DIR/./config.sh --unattended \
   --url $ORG_URL \
   --auth pat \
@@ -22,6 +24,8 @@ $BASE_DIR/./config.sh --unattended \
   --pool $POOL \
   --agent $AGENT \
   --acceptTeeEula
+
+echo "Configuring vsts service"
 sudo $BASE_DIR/./svc.sh install
 sudo $BASE_DIR/./svc.sh start
 
