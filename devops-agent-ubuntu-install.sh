@@ -7,12 +7,15 @@ PAT="$2"
 POOL="$3"
 AGENT="$4"
 
+export BASE_DIR=/opt/vsts-agent-linux
 sudo apt update
 sudo apt install -y curl wget apt-transport-https
 
 mkdir -p ~/myagent && cd ~/myagent
-wget https://download.agent.dev.azure.com/agent/4.271.0/vsts-agent-linux-x64-4.271.0.tar.gz
-tar zxvf vsts-agent-linux-x64-4.271.0.tar.gz
+mkdir $BASE_DIR
+cd $BASE_DIR
+wget https://download.agent.dev.azure.com/agent/4.271.0/vsts-agent-linux-x64-4.271.0.tar.gz -P $BASE_DIR
+tar -zxvf $BASE_DIR/vsts-agent-linux-x64-4.271.0.tar.gz
 ./config.sh --unattended \
   --url $ORG_URL \
   --auth pat \
