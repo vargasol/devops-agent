@@ -2,7 +2,7 @@
 
 echo "Install Azure Devops Agent as service"
 
-ORG_URL=$1
+ORG_URL="$1"
 PAT="$2"
 POOL="$3"
 AGENT="$4"
