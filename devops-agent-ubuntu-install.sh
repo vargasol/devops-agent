@@ -13,15 +13,15 @@ sudo apt install -y curl wget apt-transport-https
 
 wget https://download.agent.dev.azure.com/agent/4.271.0/vsts-agent-linux-x64-4.271.0.tar.gz -P $BASE_DIR
 tar -zxvf $BASE_DIR/vsts-agent-linux-x64-4.271.0.tar.gz
-$BASE_DIR./config.sh --unattended \
+$BASE_DIR/./config.sh --unattended \
   --url $ORG_URL \
   --auth pat \
   --token $PAT \
   --pool $POOL \
   --agent $AGENT \
   --acceptTeeEula
-sudo $BASE_DIR./svc.sh install
-sudo $BASE_DIR./svc.sh start
+sudo $BASE_DIR/./svc.sh install
+sudo $BASE_DIR/./svc.sh start
 
 rm vsts-agent-linux-x64-4.271.0.tar.gz
 
