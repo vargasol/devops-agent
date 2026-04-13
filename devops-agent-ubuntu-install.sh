@@ -7,14 +7,15 @@ PAT="$2"
 POOL="$3"
 AGENT="$4"
 BASE_DIR="/opt/vsts-agent-linux"
+AGENT_VERSION="4.271.0"
 
 apt update
 apt install -y curl wget apt-transport-https
 
 mkdir -p $BASE_DIR && cd $BASE_DIR
 echo "Downloading vsts agent"
-wget https://download.agent.dev.azure.com/agent/4.271.0/vsts-agent-linux-x64-4.271.0.tar.gz -P $BASE_DIR
-tar -zxvf $BASE_DIR/vsts-agent-linux-x64-4.271.0.tar.gz
+wget https://download.agent.dev.azure.com/agent/4.271.0/vsts-agent-linux-x64-$AGENT_VERSION.tar.gz -P $BASE_DIR
+tar -zxvf $BASE_DIR/vsts-agent-linux-x64-$AGENT_VERSION.tar.gz --directory $BASE_DIR
 
 echo "Running unattended configuration"
 bash $BASE_DIR/config.sh --unattended \
@@ -29,7 +30,7 @@ echo "Configuring vsts service"
 bash $BASE_DIR/svc.sh install
 bash $BASE_DIR/svc.sh start
 
-rm vsts-agent-linux-x64-4.271.0.tar.gz
+#rm vsts-agent-linux-x64-4.271.0.tar.gz
 
 echo "Install Azure CLI"
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
