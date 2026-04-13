@@ -8,8 +8,8 @@ POOL="$3"
 AGENT="$4"
 BASE_DIR="/opt/vsts-agent-linux"
 
-sudo apt update
-sudo apt install -y curl wget apt-transport-https
+apt update
+apt install -y curl wget apt-transport-https
 
 mkdir -p $BASE_DIR && cd $BASE_DIR
 echo "Downloading vsts agent"
@@ -26,8 +26,8 @@ $BASE_DIR/config.sh --unattended \
   --acceptTeeEula
 
 echo "Configuring vsts service"
-sudo $BASE_DIR/svc.sh install
-sudo $BASE_DIR/svc.sh start
+$BASE_DIR/svc.sh install
+$BASE_DIR/svc.sh start
 
 rm vsts-agent-linux-x64-4.271.0.tar.gz
 
