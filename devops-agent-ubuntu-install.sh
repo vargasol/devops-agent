@@ -14,8 +14,8 @@ apt install -y curl wget apt-transport-https
 
 mkdir -p $BASE_DIR && cd $BASE_DIR
 echo "Downloading vsts agent"
-wget https://download.agent.dev.azure.com/agent/4.271.0/vsts-agent-linux-x64-$AGENT_VERSION.tar.gz -P $BASE_DIR
-tar -zxvf $BASE_DIR/vsts-agent-linux-x64-$AGENT_VERSION.tar.gz --directory $BASE_DIR
+wget https://download.agent.dev.azure.com/agent/4.271.0/vsts-agent-linux-x64-4.271.0.tar.gz -P $BASE_DIR
+tar -zxvf $BASE_DIR/vsts-agent-linux-x64-4.271.0.tar.gz --directory $BASE_DIR
 
 echo "Running unattended configuration"
 bash $BASE_DIR/config.sh --unattended \
