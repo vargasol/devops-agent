@@ -37,6 +37,3 @@ sudo $BASE_DIR/svc.sh install
 sudo $BASE_DIR/svc.sh start
 
 rm vsts-agent-linux-x64-4.271.0.tar.gz
-
-echo "Install Azure CLI"
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
