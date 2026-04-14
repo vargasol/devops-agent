@@ -10,7 +10,8 @@ USER="$5"
 BASE_DIR="/opt/vsts-agent-linux"
 
 apt update
-apt install -y curl wget apt-transport-https
+apt upgrade -y
+apt install -y curl wget apt-transport-https unzip
 
 mkdir -p $BASE_DIR && cd $BASE_DIR
 echo "Downloading vsts agent"
