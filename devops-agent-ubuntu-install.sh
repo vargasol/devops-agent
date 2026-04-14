@@ -11,7 +11,12 @@ BASE_DIR="/opt/vsts-agent-linux"
 
 apt update
 apt upgrade -y
+
+echo "Install prerequisites"
 apt install -y curl wget apt-transport-https unzip
+
+echo "Install Azure cli"
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 mkdir -p $BASE_DIR && cd $BASE_DIR
 echo "Downloading vsts agent"
