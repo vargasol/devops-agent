@@ -7,6 +7,8 @@ PAT="$2"
 POOL="$3"
 AGENT="$4"
 USER="$5"
+AGENT_VERSION="5.277.0
+
 BASE_DIR="/opt/vsts-agent-linux"
 
 apt update
@@ -20,8 +22,8 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 mkdir -p $BASE_DIR && cd $BASE_DIR
 echo "Downloading vsts agent"
-wget https://download.agent.dev.azure.com/agent/4.271.0/vsts-agent-linux-x64-4.271.0.tar.gz -P $BASE_DIR
-tar -zxvf $BASE_DIR/vsts-agent-linux-x64-4.271.0.tar.gz --directory $BASE_DIR
+wget https://download.agent.dev.azure.com/agent/$AGENT_VERSION/vsts-agent-linux-x64-$AGENT_VERSION.tar.gz -P $BASE_DIR
+tar -zxvf $BASE_DIR/vsts-agent-linux-x64-$AGENT_VERSION.tar.gz --directory $BASE_DIR
 
 echo "Running unattended configuration"
 sudo -u $USER $BASE_DIR/config.sh --unattended \
